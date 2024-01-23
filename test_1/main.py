@@ -124,7 +124,7 @@ def setup_driver():
     options.add_argument("--disable-images")
     options.add_argument("--blink-settings=imagesEnabled=false")
     options.add_argument("--enable-precise-geolocation")
-    options.add_experimental_option("geolocation", {"latitude": 37.0902, "longitude": -95.7129})
+    # options.add_experimental_option("geolocation", {"latitude": 37.0902, "longitude": -95.7129})
     # options.add_argument("--headless")
     driver = Chrome(options=options)
 
@@ -137,6 +137,7 @@ def check_shopify(store, page_source):
     return True
 
 def get_site(driver, site):
+    print(f"Site URL: {site}")
     driver.get(f"{site}")
     wait = WebDriverWait(driver, 100)  # Wait for a maximum of 10 seconds
     wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
